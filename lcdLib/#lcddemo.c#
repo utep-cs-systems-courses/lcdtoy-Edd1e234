@@ -55,11 +55,11 @@ main()
   for (int i=0; i <= size; i++) {
     int colLeft = size-i;
     for (int j=0; j <=i; j++) {
-      drawPixel(x_offset+colLeft, y_offset-j, COLOR_BLUE);
-      drawPixel(x_offset-colLeft, y_offset-j, COLOR_BLUE); 
+      drawPixel(x_offset+colLeft, y_offset-j, COLOR_BLUE); // Top right
+      drawPixel(x_offset-colLeft, y_offset-j, COLOR_BLUE); // Top left
       
-      drawPixel(x_offset+colLeft, y_offset+j, COLOR_RED);
-      drawPixel(x_offset-colLeft, y_offset+j, COLOR_GREEN);
+      drawPixel(x_offset+colLeft, y_offset+j, COLOR_RED); // Bottom right
+      drawPixel(x_offset-colLeft, y_offset+j, COLOR_GREEN); // Bottom left
     }
   }
 

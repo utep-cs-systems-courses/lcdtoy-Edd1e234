@@ -115,3 +115,28 @@ void drawRectOutline(u_char colMin, u_char rowMin, u_char width, u_char height,
   fillRectangle(colMin + width, rowMin, 1, height, colorBGR);
 }
 
+
+void drawSquare(u_char colMin, u_char rowMin, u_char width, u_int colorBGR) {
+
+  int x_counter = colMin;
+  for (int y_counter = rowMin; y_counter <= width+rowMin; y_counter++) {
+    // Left line, top to bottom
+    drawPixel(colMin, y_counter, colorBGR);
+
+    // Top line, left to right
+    drawPixel(x_counter, rowMin, colorBGR);
+
+    // Left line, top to bottom
+    drawPixel(colMin+width, y_counter, colorBGR);
+
+    // Bottom line, left to right
+    drawPixel(x_counter, rowMin+width, colorBGR);
+    
+    // fill in left to right. 
+    for (int fill = colMin; fill < colMin+width; fill++) {
+      drawPixel(fill, y_counter, colorBGR);
+    }
+
+    x_counter++; 
+  }
+}
