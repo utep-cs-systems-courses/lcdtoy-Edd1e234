@@ -3,10 +3,9 @@
 #include "lcddraw.h"
 #include "shape.h"
 
-const AbRect rect10 = {abRectGetBounds, abRectCheck, 10,10};;
+const AbRect rect10 = {abRectGetBounds, abRectCheck, 40,40};
 
-void
-abDrawPos(AbShape *shape, Vec2 *shapeCenter, u_int fg_color, u_int bg_color)
+void abDrawPos(AbShape *shape, Vec2 *shapeCenter, u_int fg_color, u_int bg_color)
 {
   u_char row, col;
   Region bounds;
@@ -34,11 +33,19 @@ main()
   Vec2 rectPos = screenCenter;
 
   clearScreen(COLOR_BLUE);
-  drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
+  // drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
   shapeInit();
   
-  abDrawPos((AbShape*)&rect10, &rectPos, COLOR_ORANGE, COLOR_BLUE);
+  // abDrawPos((AbShape*)&rect10, &rectPos, COLOR_ORANGE, COLOR_BLUE);
 
+
+  // This the shape.
+  AbRect smallRec20 = {abRectGetBounds, abRectCheck, 20,20};
+
+  // This is the location 
+  Vec2 smallRecVec = {10, 10};
+
+  abDrawPos((AbShape*)&smallRec20, &smallRecVec, COLOR_ORANGE, COLOR_BLUE);
 }
 
 

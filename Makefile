@@ -11,6 +11,7 @@ doc:
 	rm -rf doxygen_docs
 	doxygen Doxyfile
 clean:
+	(cd button_demo; make clean)
 	(cd timerLib; make clean)
 	(cd lcdLib; make clean)
 	(cd shapeLib; make clean)
