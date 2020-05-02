@@ -4,6 +4,10 @@
 #include "stateMachines.h"
 #include "stateMachinesUtil.h"
 #include "stateMachinesVisual.h"
+#include <lcdutils.h>
+#include <lcddraw.h>
+#include <shape.h>
+#include <abCircle.h> 
 
 static char prev_state; 
 char switch_state_down_button_1, switch_state_down_button_2, switch_state_down_button_3;
@@ -54,6 +58,7 @@ switch_interrupt_handler()
   state = (p2val & SW3) ? state: 2;
   state = (p2val & SW4) ? state: 3;
 
+  // Visual. 
   if (prev_state == state) {
     clearScreen(background_screen_state[state]);
   }
