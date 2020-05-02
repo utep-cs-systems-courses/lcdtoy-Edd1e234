@@ -6,11 +6,12 @@
 
 char switch_state_down_button_1, switch_state_down_button_2, switch_state_down_button_3;
 char switch_state_down_button_4, switch_state_changed; /* effectively boolean */
+char p2val, switches_last_reported;
 
 static char 
 switch_update_interrupt_sense()
 {
-  char p2val = P2IN;
+  p2val = P2IN;
   /* update switch interrupt to detect changes from current buttons */
   P2IES |= (p2val & SWITCHES);	/* if switch up, sense down */
   P2IES &= (p2val | ~SWITCHES);	/* if switch down, sense up */
@@ -27,6 +28,18 @@ switch_init()			/* setup switch */
   switch_update_interrupt_sense();
   state = 0; 
   led_update_switch();
+}
+
+/* Returns a word where:
+ * the high-order byte is the buttons that have changed.
+ * The low-order byte is the current state of the buttons.
+ */
+
+// TODO change p2val to switches_current
+unsigned int p2sw_read() {
+  unsigned int sw_changed = p2val ^ switches_last_reported;
+  switches_last_reported = p2val;
+  return p2val | (sw_changed << 8);
 }
 
 void

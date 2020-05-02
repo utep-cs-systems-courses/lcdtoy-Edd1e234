@@ -160,7 +160,7 @@ void main(void)
 void wdt_c_handler()
 {
   static short count = 0;
-  P1OUT |= GREEN_LED;		      /**< Green LED on when cpu on */
+  //  P1OUT |= GREEN_LED;		      /**< Green LED on when cpu on */
   count ++;
   if (count == 15) {
     mlAdvance(&ml0, &fieldFence);
@@ -168,5 +168,5 @@ void wdt_c_handler()
       redrawScreen = 1;
     count = 0;
   }
-  P1OUT &= ~GREEN_LED;		    /**< Green LED off when cpu off */
+  //P1OUT &= ~GREEN_LED;		    /**< Green LED off when cpu off */
 }
