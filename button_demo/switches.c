@@ -3,7 +3,9 @@
 #include "switches.h"
 #include "stateMachines.h"
 #include "stateMachinesUtil.h"
+#include "stateMachinesVisual.h"
 
+static char prev_state; 
 char switch_state_down_button_1, switch_state_down_button_2, switch_state_down_button_3;
 char switch_state_down_button_4, switch_state_changed; /* effectively boolean */
 char p2val, switches_last_reported;
@@ -52,6 +54,9 @@ switch_interrupt_handler()
   state = (p2val & SW3) ? state: 2;
   state = (p2val & SW4) ? state: 3;
 
-  
+  if (prev_state == state) {
+    clearScreen(background_screen_state[state]);
+  }
+  prev_state = state; 
   switch_state_changed = 1; 
 }
