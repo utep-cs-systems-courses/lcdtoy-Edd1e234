@@ -46,10 +46,8 @@ main()
   clearScreen(COLOR_BLUE);
   drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
   shapeInit();
-  
+
   layerInit(&layer0);
   layerDraw(&layer0);
-  
+
 }
-
-
