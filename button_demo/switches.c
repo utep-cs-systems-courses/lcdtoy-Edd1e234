@@ -61,8 +61,6 @@ switch_interrupt_handler()
 
   // Visual. 
   if (prev_state != state) {
-    clearScreen(background_screen_state[state]);
-
     buzzer_set_period(1000); 
     if (state==0) {
       state_1_visual();

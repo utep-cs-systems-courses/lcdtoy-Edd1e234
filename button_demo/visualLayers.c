@@ -72,13 +72,21 @@ void drawFace() {
   unsigned char eye_x = 88;
   unsigned char sideLength = 10; 
 
-  // Pupuils
+  //Outer eyes
   fillRectangle(eye_x, eye_y, sideLength, sideLength, COLOR_WHITE);
   fillRectangle(eye_x, eye_y-30, sideLength, sideLength, COLOR_WHITE);
 
+  //Pupils
   sideLength = sideLength/2;
   fillRectangle(eye_x+2, eye_y+5, sideLength, sideLength, COLOR_DARK_OLIVE_GREEN);
-  fillRectangle(eye_x+2, eye_y-25, sideLength, sideLength, COLOR_DARK_OLIVE_GREEN); 
+  fillRectangle(eye_x+2, eye_y-25, sideLength, sideLength, COLOR_DARK_OLIVE_GREEN);
+
+  //Mouth
+
+  unsigned char mouth_x = 55;
+  unsigned char mouth_y = 75;
+
+  fillRectangle(mouth_x, mouth_y, 8, 25, COLOR_PINK);
 }
 
 
