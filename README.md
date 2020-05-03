@@ -1,6 +1,8 @@
 # Project 3: Graphical LCD Toy 
 ## Introduction
 
+hi
+
 Continuing your effort to help ACME Solutions provide Christmas toys, 
 your task is now to develop a toy with a graphical LCD screen.  You should 
 utilize the knowledge you havegained working with the buttons and 
