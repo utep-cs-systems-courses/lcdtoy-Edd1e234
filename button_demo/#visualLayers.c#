@@ -35,7 +35,11 @@ Layer headLayer = {
   (AbShape *)&head,
   {75, 85}, {0,0}, {0,0}, COLOR_BLUE,
   &headLayerOutline
-}; 
+};
+
+// Neck part
+const AbRect neck = {abRectGetBounds, abRectCheck, 15}; 
+
 
 // Outer stuff. Looks about done.
 const AbRectOutline fieldOutline  = {abRectOutlineGetBounds, abRectOutlineCheck,
