@@ -33,8 +33,25 @@ const AbRect head = {abRectGetBounds, abRectCheck, {29, 23}};
 
 Layer headLayer = {
   (AbShape *)&head,
-  {75, 85}, {0,0}, {0,0}, COLOR_BLUE,
+  {75, 85}, {0,0}, {0,0},
+  COLOR_ROYAL_BLUE,
   &headLayerOutline
+};
+
+const AbRect shoulder = {abRectGetBounds, abRectCheck, {10, 30}};
+
+Layer shoulderLayer = {
+  (AbShape *)&shoulder,
+  {20, 70}, {0,0}, {0,0},
+  COLOR_ROYAL_BLUE, &headLayer
+}; 
+
+const AbRect neck = {abRectGetBounds, abRectCheck, {15, 12}};
+
+Layer neckLayer = {
+  (AbShape *)&neck,
+  {29, 88}, {0,0}, {0,0},
+  COLOR_ROYAL_BLUE, &shoulderLayer
 }; 
 
 // Outer stuff. Looks about done.
@@ -43,6 +60,6 @@ const AbRectOutline fieldOutline  = {abRectOutlineGetBounds, abRectOutlineCheck,
 }; 
 Layer fieldLayer = {
   (AbShape *)&fieldOutline, {(screenWidth/2), (screenHeight/2)}, {0,0}, {0,0},
-  COLOR_BLACK, &headLayer
+  COLOR_BLACK, &neckLayer
 };
 Region fieldFence; 
