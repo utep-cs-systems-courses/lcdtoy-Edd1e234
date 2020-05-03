@@ -7,9 +7,22 @@
 #include <shape.h>
 #include <abCircle.h>
 
-const int background_screen_state[] = {COLOR_RED, COLOR_GREEN, COLOR_BLUE, COLOR_WHITE};
-static char visual_state_1; 
+const int background_screen_state[] = {COLOR_RED, COLOR_WHITE, COLOR_BLUE, COLOR_WHITE};
+static char visual_state_2=1;
+unsigned int bgColor = COLOR_WHITE;
 
+AbRectOutline fieldOutline = {abRectOutlineGetBounds, abRectOutlineCheck,
+			      {screenWidth/2-10, screenHeight/2-10}
+};
+
+Layer fieldLayer = {
+  (AbShape *) &fieldOutline,
+  {(screenWidth/2), (screenHeight/2)},
+  {0,0}, {0,0},
+  COLOR_BLACK, 0
+};
+
+Region fieldFence; 
 
 // State machine 1 layers for that.
 void state_1_visual() {
@@ -17,6 +30,16 @@ void state_1_visual() {
 }
 void state_2_visual() {
   drawString5x7(20,20, "State 2", COLOR_BLUE, COLOR_GREEN);
+
+  if (visual_state_2) {
+    bgColor = background_screen_state[state]; 
+    layerInit(&fieldLayer);
+    layerDraw(&fieldLayer);
+
+    layerGetBounds(&fieldLayer, &fieldFence);
+  }
+    
+   visual_state_2=0; 
 }
 void state_3_visual() {
   // drawString5x7(20,20, "State 3", COLOR_GREEN, COLOR_RED);

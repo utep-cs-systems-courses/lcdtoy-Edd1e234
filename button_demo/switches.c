@@ -78,6 +78,5 @@ switch_interrupt_handler()
     }
   }
   prev_state = state;
-
   switch_state_changed = 1; 
 }
