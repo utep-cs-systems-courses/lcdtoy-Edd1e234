@@ -29,7 +29,6 @@ toggle_button_1:
 	cmp #4, &state_button_1 	; state_button_1-4
 	jc t1_default
 
-	call #state_1_visual		; Doing visual
 	mov &state_button_1, r12
 	add r12, r12			; r12=2*state_button_1
 	mov t1(r12), r0 	
@@ -64,7 +63,6 @@ toggle_button_2:
 	cmp #2, &state_button_2		;2-state_button_2
 	jc t2_default			; if state_button_2 == 0
 
-	call #state_2_visual		; sets up visual
 	mov &state_button_2, r12
 	add r12, r12
 	mov t2(r12), r0
@@ -96,7 +94,6 @@ toggle_button_3:
 	cmp #5, &state_button_3		; 5-state_button_3	
 	jc t3_default			; if state_button_3 = 0
 
-	call #state_3_visual		; sets up visual
 	mov &state_button_3, r12
 	add r12, r12
 	mov t3(r12), r0			; puts places next case into stack 
@@ -138,8 +135,6 @@ toggle_button_4:
 	cmp.b &value, &FINAL		;if value == FINAL
 	jeq value_is_FINAL		;if true jumps to value_is_FINAL
 
-	call #state_4_visual		;sets up visual
-	
 	cmp #2, &state_button_4		;state_button_4-2
 	jc t4_default
 
