@@ -12,7 +12,6 @@ main()
 {
   configureClocks();
   lcd_init();
-  u_char width = screenWidth, height = screenHeight;
 
   clearScreen(COLOR_WHITE);
 
@@ -47,7 +46,7 @@ main()
   }
   */
   
-  
+  /*
   int x_offset =10;
   int y_offset = 10;
   int width_ = 20;
@@ -55,13 +54,43 @@ main()
   for (int i=0; i <= size; i++) {
     int colLeft = size-i;
     for (int j=0; j <=i; j++) {
-      drawPixel(x_offset+colLeft, y_offset-j, COLOR_BLUE);
+      //drawPixel(x_offset+colLeft, y_offset-j, COLOR_BLUE);
       drawPixel(x_offset-colLeft, y_offset-j, COLOR_BLUE); 
       
-      drawPixel(x_offset+colLeft, y_offset+j, COLOR_RED);
-      drawPixel(x_offset-colLeft, y_offset+j, COLOR_GREEN);
+      //drawPixel(x_offset+colLeft, y_offset+j, COLOR_RED);
+      //drawPixel(x_offset-colLeft, y_offset+j, COLOR_GREEN);
     }
   }
+  */
 
- 
+  
+  u_int color = COLOR_BLUE; 
+  u_int x_offset = 40;
+  u_int y_offset = 40;
+  u_int top_length = 10;
+  u_int bottom_length = 15;
+  u_int actual_length = bottom_length-top_length; 
+
+  for (int i = 0; i<=top_length; i++) {
+    // Square loop
+    
+    for (int c = 0; c < top_length; c++) {
+      drawPixel(c+x_offset, i+y_offset, color);  
+    }
+    drawPixel(x_offset, y_offset+i, COLOR_BLACK);
+    drawPixel(x_offset+top_length, y_offset+i, COLOR_BLACK);
+    drawPixel(x_offset+i, y_offset, COLOR_BLACK);
+    drawPixel(x_offset+i, y_offset+top_length, COLOR_BLACK);
+  }
+
+  x_offset -= 1;
+  for (int i=0; i<=top_length; i++) {
+    u_int colLeft = top_length-i; 
+    for (int j=0; j<=i; j++) {
+      drawPixel(x_offset+i-top_length, y_offset+top_length-j, color); 
+    }
+    drawPixel(0+x_offset, i+y_offset, COLOR_BLACK);
+    drawPixel(i+x_offset-top_length, y_offset+top_length, COLOR_BLACK);
+    drawPixel(x_offset+i-top_length, y_offset+top_length-i, COLOR_BLACK); 
+  }
 }
