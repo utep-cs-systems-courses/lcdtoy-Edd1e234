@@ -8,4 +8,6 @@ extern Layer fieldLayer;
 extern Region fieldFence;
 Layer mainGreenLayer, mainOrangeLayer;
 
+void drawFace(); 
+
 #endif

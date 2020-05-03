@@ -57,7 +57,7 @@ void state_2_visual() {
     layerDraw(&fieldLayer);
 
     layerGetBounds(&fieldLayer, &fieldFence);
-    //    draw_neck(); 
+    drawFace(); 
   }
 
    visual_state_2=0;

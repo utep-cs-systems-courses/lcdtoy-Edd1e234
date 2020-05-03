@@ -22,14 +22,14 @@ Layer mainGreenLayer = {
 
 // This will be the head stuff
 
-const AbRectOutline headOutline = {abRectOutlineGetBounds, abRectOutlineCheck, {30, 24}};
+const AbRectOutline headOutline = {abRectOutlineGetBounds, abRectOutlineCheck, {30, 26}};
 
 Layer headLayerOutline = {
   (AbShape *)&headOutline,
   {75, 85}, {0,0}, {0,0},
   COLOR_BLACK, &mainOrangeLayer
 }; 
-const AbRect head = {abRectGetBounds, abRectCheck, {29, 23}};
+const AbRect head = {abRectGetBounds, abRectCheck, {29, 25}};
 
 Layer headLayer = {
   (AbShape *)&head,
@@ -37,6 +37,8 @@ Layer headLayer = {
   COLOR_ROYAL_BLUE,
   &headLayerOutline
 };
+
+//Shoulder Code. 
 
 const AbRect shoulder = {abRectGetBounds, abRectCheck, {10, 30}};
 
@@ -63,3 +65,22 @@ Layer fieldLayer = {
   COLOR_BLACK, &neckLayer
 };
 Region fieldFence; 
+
+
+void drawFace() {
+  unsigned char eye_y = 95;
+  unsigned char eye_x = 88;
+  unsigned char sideLength = 10; 
+
+  // Pupuils
+  fillRectangle(eye_x, eye_y, sideLength, sideLength, COLOR_WHITE);
+  fillRectangle(eye_x, eye_y-30, sideLength, sideLength, COLOR_WHITE);
+
+  sideLength = sideLength/2;
+  fillRectangle(eye_x+2, eye_y+5, sideLength, sideLength, COLOR_DARK_OLIVE_GREEN);
+  fillRectangle(eye_x+2, eye_y-25, sideLength, sideLength, COLOR_DARK_OLIVE_GREEN); 
+}
+
+
+
+
