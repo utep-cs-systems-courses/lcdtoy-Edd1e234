@@ -2,6 +2,7 @@
 #include "buzzer.h"
 #include "stateMachinesVisual.h"
 #include "stateMachines.h"
+#include "visualLayers.h"
 #include <lcdutils.h>
 #include <lcddraw.h>
 #include <shape.h>
@@ -10,19 +11,6 @@
 const int background_screen_state[] = {COLOR_RED, COLOR_WHITE, COLOR_BLUE, COLOR_WHITE};
 static char visual_state_2=1;
 unsigned int bgColor = COLOR_WHITE;
-
-AbRectOutline fieldOutline = {abRectOutlineGetBounds, abRectOutlineCheck,
-			      {screenWidth/2-10, screenHeight/2-10}
-};
-
-Layer fieldLayer = {
-  (AbShape *) &fieldOutline,
-  {(screenWidth/2), (screenHeight/2)},
-  {0,0}, {0,0},
-  COLOR_BLACK, 0
-};
-
-Region fieldFence; 
 
 // State machine 1 layers for that.
 void state_1_visual() {
