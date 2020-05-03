@@ -4,7 +4,8 @@
 #include <shape.h>
 
 extern const AbRectOutline fieldOutline; 
-extern const Layer fieldLayer;
-extern Region fieldFence; 
+extern Layer fieldLayer;
+extern Region fieldFence;
+Layer mainGreenLayer, mainOrangeLayer;
 
 #endif
