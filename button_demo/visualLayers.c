@@ -39,7 +39,6 @@ Layer headLayer = {
 };
 
 //Shoulder Code. 
-
 const AbRect shoulder = {abRectGetBounds, abRectCheck, {10, 30}};
 
 Layer shoulderLayer = {
@@ -66,7 +65,11 @@ Layer fieldLayer = {
 };
 Region fieldFence; 
 
+void drawDiamonds(); 
 
+/**
+ * This function draws the face. 
+ */
 void drawFace() {
   unsigned char eye_y = 95;
   unsigned char eye_x = 88;
@@ -87,8 +90,32 @@ void drawFace() {
   unsigned char mouth_y = 75;
 
   fillRectangle(mouth_x, mouth_y, 8, 25, COLOR_PINK);
+
+  //Draws Diamonds
+  drawDiamonds(); 
 }
 
+void drawDiamondVisual(); 
 
+void drawDiamonds() {
+  drawDiamondVisual(45, 48, 5, COLOR_SKY_BLUE);
+  drawDiamondVisual(90, 43, 8, COLOR_SKY_BLUE);
+  drawDiamondVisual(100, 135, 22, COLOR_SKY_BLUE); 
+}
 
+/**
+ *Draws diamond
+ */
+void drawDiamondVisual(int x, int y, int size, unsigned int color) {
+  for (int i=0; i<=size; i++) {
+    int colLeft = size-i;
+    for (int j=0; j<=i; j++) {
+      drawPixel(x+colLeft, y-j, color);
+      drawPixel(x-colLeft, y-j, color);
+
+      drawPixel(x+colLeft, y+j, color);
+      drawPixel(x-colLeft, y+j, color);
+    }
+  }
+}
 

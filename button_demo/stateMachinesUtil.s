@@ -178,7 +178,9 @@ option1:				; case 1
 	jmp final_out
 
 option2:				; case 2, DEPRICATED
-
+	mov.b #0, r12
+	mov.b #185, r13
+	call #set_values
 	jmp final_out		
 
 option3:				; case 3
