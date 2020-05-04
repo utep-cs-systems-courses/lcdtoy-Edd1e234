@@ -96,7 +96,9 @@ void drawFace() {
 void drawDiamondVisual(); 
 
 void drawDiamonds() {
-  drawDiamondVisual(55, 60, 5, COLOR_SKY_BLUE); 
+  drawDiamondVisual(45, 48, 5, COLOR_SKY_BLUE);
+  drawDiamondVisual(90, 43, 8, COLOR_SKY_BLUE);
+  drawDiamondVisual(100, 135, 22, COLOR_SKY_BLUE); 
 }
 
 /**

@@ -13,7 +13,6 @@ unsigned int bgColor = COLOR_WHITE;
 
 // State machine 1 layers for that.
 void state_1_visual() {
-  clearScreen(COLOR_WHITE); 
   drawString5x7(10,20, "Button 1 Main Menu", COLOR_RED, COLOR_WHITE);
   drawString5x7(10,40, "Button 2 Layers", COLOR_RED, COLOR_WHITE);
   drawString5x7(10,60, "Button 3 FACE", COLOR_RED, COLOR_WHITE);
@@ -22,6 +21,7 @@ void state_1_visual() {
 }
 
 void state_2_visual() {
+  clearScreen(COLOR_GRAY); 
   layerInit(&fieldLayer);
   layerDraw(&fieldLayer);
   layerGetBounds(&fieldLayer, &fieldFence);
