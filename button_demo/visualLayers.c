@@ -66,6 +66,7 @@ Layer fieldLayer = {
 };
 Region fieldFence; 
 
+void drawDiamonds(); 
 
 void drawFace() {
   unsigned char eye_y = 95;
@@ -87,8 +88,30 @@ void drawFace() {
   unsigned char mouth_y = 75;
 
   fillRectangle(mouth_x, mouth_y, 8, 25, COLOR_PINK);
+
+  //Draws Diamonds
+  drawDiamonds(); 
 }
 
+void drawDiamondVisual(); 
 
+void drawDiamonds() {
+  drawDiamondVisual(55, 60, 5, COLOR_SKY_BLUE); 
+}
 
+/**
+ *Draws diamond
+ */
+void drawDiamondVisual(int x, int y, int size, unsigned int color) {
+  for (int i=0; i<=size; i++) {
+    int colLeft = size-i;
+    for (int j=0; j<=i; j++) {
+      drawPixel(x+colLeft, y-j, color);
+      drawPixel(x-colLeft, y-j, color);
+
+      drawPixel(x+colLeft, y+j, color);
+      drawPixel(x-colLeft, y+j, color);
+    }
+  }
+}
 
