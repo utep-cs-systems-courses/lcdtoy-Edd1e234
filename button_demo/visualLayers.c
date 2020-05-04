@@ -39,7 +39,6 @@ Layer headLayer = {
 };
 
 //Shoulder Code. 
-
 const AbRect shoulder = {abRectGetBounds, abRectCheck, {10, 30}};
 
 Layer shoulderLayer = {
@@ -68,6 +67,9 @@ Region fieldFence;
 
 void drawDiamonds(); 
 
+/**
+ * This function draws the face. 
+ */
 void drawFace() {
   unsigned char eye_y = 95;
   unsigned char eye_x = 88;

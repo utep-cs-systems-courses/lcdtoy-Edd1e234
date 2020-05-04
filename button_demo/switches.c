@@ -61,19 +61,12 @@ switch_interrupt_handler()
 
   // Visual. 
   if (prev_state != state) {
+    // Signals that state has changed.
     buzzer_set_period(1000); 
-    if (state==0) {
-      state_1_visual();
-    }
-    else if (state==1) {
-      state_2_visual();
-    }
-    else if (state==2) {
-      state_3_visual();
-    }
-    else if (state==3) {
-      state_4_visual();
-    }
+    if (state==0) state_1_visual();
+    else if (state==1) state_2_visual();
+    else if (state==2) state_3_visual();
+    else if (state==3) state_4_visual();
   }
   prev_state = state;
   switch_state_changed = 1; 

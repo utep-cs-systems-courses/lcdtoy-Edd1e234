@@ -18,7 +18,6 @@ void state_1_visual() {
   drawString5x7(10,40, "Button 2 Layers", COLOR_RED, COLOR_WHITE);
   drawString5x7(10,60, "Button 3 FACE", COLOR_RED, COLOR_WHITE);
   drawString5x7(10,80, "Button 4 Song", COLOR_RED, COLOR_WHITE);
-  // drawFace(); 
 }
 
 void state_2_visual() {
