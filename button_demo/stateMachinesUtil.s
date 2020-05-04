@@ -83,44 +83,9 @@ t2_default:
 ;;; states. On the final state turns lights on. Turns both LEDs on, on final
 ;;; states. 
 
-t3:
-	.word t3_default 		;t3[0]
-	.word t3_option1		;t3[1]
-	.word t3_option2		;t3[2]
-	.word t3_option3		;t3[3]
-	.word t3_option4		;t4[4]
 
 toggle_button_3:
-	cmp #5, &state_button_3		; 5-state_button_3	
-	jc t3_default			; if state_button_3 = 0
-
-	mov &state_button_3, r12
-	add r12, r12
-	mov t3(r12), r0			; puts places next case into stack 
-
-t3_default:				; sets to 0. 
-	mov.b 0, &red_led_state
-	mov.b 0, &green_led_state
-	mov #1, &state_button_3
-	jmp out
-
-t3_option1:				; maintains the state
-	mov #2, &state_button_3
-	jmp out
-	
-t3_option2:				; maintains the state 
-	mov #3, &state_button_3
-	jmp out
-	
-t3_option3:				; maintains the state 
-	mov #4, &state_button_3
-	jmp out
-
-t3_option4:				; turns on LEDS 
-	mov.b #1, &green_led_state
-	mov.b #1, &red_led_state
-	mov #0, &state_button_3
-	jmp out
+	call #out
 
 ;;; this function contains the state machine that transitions
 ;;; the song from note to note. On donw beats lights will turn on.
@@ -212,12 +177,9 @@ option1:				; case 1
 	call #toggle_button_2		; toggles button 2
 	jmp final_out
 
-option2:				; case 2
-	mov.b #0, r12
-	mov.b #1, r13
-	call #set_values		; calls set_values(0, 1) 
-	call #toggle_button_3		; calls button 3
-	jmp final_out
+option2:				; case 2, DEPRICATED
+
+	jmp final_out		
 
 option3:				; case 3
 	call #toggle_button_4		; toggles_button_4

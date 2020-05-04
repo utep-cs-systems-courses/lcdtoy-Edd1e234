@@ -16,8 +16,8 @@ void state_1_visual() {
   clearScreen(COLOR_WHITE); 
   drawString5x7(10,20, "Button 1 Main Menu", COLOR_RED, COLOR_WHITE);
   drawString5x7(10,40, "Button 2 Layers", COLOR_RED, COLOR_WHITE);
-  drawString5x7(10,60, "Button 3 BREAK", COLOR_RED, COLOR_WHITE);
-  drawString5x7(10,80, "Button 4 Song/FACE", COLOR_RED, COLOR_WHITE);
+  drawString5x7(10,60, "Button 3 FACE", COLOR_RED, COLOR_WHITE);
+  drawString5x7(10,80, "Button 4 Song", COLOR_RED, COLOR_WHITE);
   // drawFace(); 
 }
 
@@ -27,12 +27,8 @@ void state_2_visual() {
   layerGetBounds(&fieldLayer, &fieldFence);
 }
 void state_3_visual() {
-  //clearScreen(COLOR_WHITE);
-  //drawFace(); 
-  // drawString5x7(20,20, "State 3", COLOR_GREEN, COLOR_RED);
+  drawFace();
 }
 void state_4_visual() {
-  //clearScreen(COLOR_WHITE); 
-  //drawString5x7(20, 20, "State 4", COLOR_BLUE, COLOR_WHITE);
-  drawFace(); 
+  clearScreen(COLOR_BLACK);
 }
