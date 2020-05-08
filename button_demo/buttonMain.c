@@ -19,8 +19,22 @@ void main(void)
   lcd_init();
   shapeInit();
 
-  clearScreen(COLOR_BLUE); 
+  clearScreen(COLOR_BLUE);
 
   or_sr(0x18);  // CPU off, GIE on
 }
 
+/** Watchdog timer interrupt handler. 15 interrupts/sec */
+void wdt_c_handler()
+{
+  static short count = 0;
+  P1OUT |= GREEN_LED;		      /**< Green LED on when cpu on */
+  count ++;
+  if (count == 15) {
+    mlAdvance(&ml0, &fieldFence);
+    if (p2sw_read())
+      redrawScreen = 1;
+    count = 0;
+  }
+  P1OUT &= ~GREEN_LED;		    /**< Green LED off when cpu off */
+}
