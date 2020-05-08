@@ -18,7 +18,7 @@ char p2val, switches_last_reported;
 static char 
 switch_update_interrupt_sense()
 {
-  p2val = P2IN;
+  p2val = P2IN & SWITCHES;
   /* update switch interrupt to detect changes from current buttons */
   P2IES |= (p2val & SWITCHES);	/* if switch up, sense down */
   P2IES &= (p2val | ~SWITCHES);	/* if switch down, sense up */
@@ -44,6 +44,7 @@ switch_init()			/* setup switch */
 
 // TODO change p2val to switches_current
 unsigned int p2sw_read() {
+  switch_interrupt_handler();
   unsigned int sw_changed = p2val ^ switches_last_reported;
   switches_last_reported = p2val;
   return p2val | (sw_changed << 8);
@@ -58,7 +59,7 @@ switch_interrupt_handler()
   state = (p2val & SW2) ? state: 1;
   state = (p2val & SW3) ? state: 2;
   state = (p2val & SW4) ? state: 3;
-
+  /*
   // Visual. 
   if (prev_state != state) {
     // Signals that state has changed.
@@ -68,6 +69,8 @@ switch_interrupt_handler()
     else if (state==2) state_3_visual();
     else if (state==3) state_4_visual();
   }
+  */
+  
   prev_state = state;
   switch_state_changed = 1; 
 }
