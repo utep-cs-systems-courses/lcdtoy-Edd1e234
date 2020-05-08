@@ -19,8 +19,19 @@ void main(void)
   lcd_init();
   shapeInit();
 
-  or_sr(0x8);  // CPU off, GIE on
-
+  or_sr(0x8); 
 
 }
 
+/** Watchdog timer interrupt handler. 15 interrupts/sec */
+void wdt_c_handler()
+{
+  static short count = 0;
+  count ++;
+  if (count == 15) {
+    //mlAdvance(&ml0, &fieldFence);
+    if (p2sw_read()) {
+         count = 0;
+    }
+  }
+}
