@@ -19,8 +19,8 @@ void main(void)
   lcd_init();
   shapeInit();
 
-  clearScreen(COLOR_BLUE); 
+  or_sr(0x8);  // CPU off, GIE on
 
-  or_sr(0x18);  // CPU off, GIE on
+
 }
 
