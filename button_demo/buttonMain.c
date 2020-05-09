@@ -19,9 +19,19 @@ void main(void)
   lcd_init();
   shapeInit();
 
-  clearScreen(COLOR_BLUE);
+  enableWDTInterrupts();      /**< enable periodic interrupt */
+  or_sr(0x8);	              /**< GIE (enable interrupts) */
 
-  or_sr(0x18);  // CPU off, GIE on
+
+  for(;;) {
+    while (!redrawScreen) { /**< Pause CPU if screen doesn't need updating */
+      P1OUT &= ~GREEN_LED;    /**< Green led off witHo CPU */
+      or_sr(0x10);	      /**< CPU OFF */
+    }
+    P1OUT |= GREEN_LED;       /**< Green led on when CPU on */
+    redrawScreen = 0;
+    movLayerDraw(&ml0, &layer0);
+  }
 }
 
 /** Watchdog timer interrupt handler. 15 interrupts/sec */
