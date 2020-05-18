@@ -58,16 +58,4 @@ switch_interrupt_handler()
   state = (p2val & SW2) ? state: 1;
   state = (p2val & SW3) ? state: 2;
   state = (p2val & SW4) ? state: 3;
-
-  // Visual. 
-  if (prev_state != state) {
-    // Signals that state has changed.
-    buzzer_set_period(1000); 
-    if (state==0) state_1_visual();
-    else if (state==1) state_2_visual();
-    else if (state==2) state_3_visual();
-    else if (state==3) state_4_visual();
-  }
-  prev_state = state;
-  switch_state_changed = 1; 
 }

@@ -14,5 +14,6 @@ unsigned int p2sw_read();
 
 /* Boolean statements */
 extern char switch_state_changed;
+extern char cpu;
 
 #endif // included
