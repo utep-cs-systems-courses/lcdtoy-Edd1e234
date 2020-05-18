@@ -1,8 +1,9 @@
+.arch msp430g2553
 .file	"_wdt_handler.c"
 .text
-.balign 2
+.align 2
 .global	WDT
-.section	__interrupt_vector_11,"ax",@progbits
+.section	__interrupt_vector_11,"ax", @progbits
 .word	WDT
 .text
 
@@ -47,7 +48,7 @@ POP	R12
 POP	R13
 POP	R14
 POP	R15
-cmp	#0, &redrawScreen
+cmp	#0, &cpu
 jz	ball_no_move
 and	#0xffef, 0(r1)	; clear CPU off in saved SR
 ball_no_move:

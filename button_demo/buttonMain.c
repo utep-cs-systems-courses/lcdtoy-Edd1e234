@@ -11,7 +11,7 @@
 #include <shape.h>
 #include <abCircle.h>
 
-char cpu =0;
+char cpu = 0;
 static char prev_state = 6;
 
 void draw() {
@@ -20,15 +20,20 @@ void draw() {
   switch(state) {
   case 0:
     state_1_visual();
+    cpu = 1;
     break;
   case 1:
     state_2_visual();
+    cpu = 1;
     break;
   case 2:
     state_3_visual();
+    cpu = 1;
     break;
   case 3:
     state_4_visual();
+    // Turns off CPU
+    cpu = 0;
     break;
   }
   prev_state = state; 
@@ -54,8 +59,6 @@ void main(void)
       clearScreen(COLOR_BLUE);
       or_sr(0x10);	      /**< CPU OFF */
     }
-    clearScreen(COLOR_GREEN);
-    cpu = 0;
     draw();
   }
 }
@@ -64,13 +67,11 @@ void main(void)
 void wdt_c_handler()
 {
   static short count = 0;
-  P1OUT |= LED_GREEN;		      /**< Green LED on when cpu on */
-  count ++;
+  count++;
   if (count == 15) {
     if (p2sw_read()) {
       cpu = 1; 
     }
     count = 0;
   }
-  P1OUT &= ~LED_GREEN;		    /**< Green LED off when cpu off */
 }
